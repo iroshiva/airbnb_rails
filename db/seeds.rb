@@ -46,13 +46,21 @@ Stroll.destroy_all
 70.times do
 	dog = Dog.all.sample
 	dogsitter = Dogsitter.all.sample
+	# définition de deux variables
 
 	while dogsitter.city != dog.city
 		dog = Dog.all.sample
 	end
+	# boucle qui dit que "tant que les cities de dogsitter et dog sont différentes, ne crée rien!"
+	# evite les strolls dans des villes différentes!
+
   Stroll.create(
   	dog: dog,
+  	# fait référence au dog_id de stroll
+
   	dogsitter: dogsitter
+  	# fait référence au dogsitter_id de stroll
+  	
   	)
 end
 # création de 70 promenades
