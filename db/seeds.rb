@@ -33,12 +33,12 @@ end
 
 City.destroy_all
 
-30.times do
+8.times do
 	city = City.create(
-		name: ["Marseille", "Lille", "Dijon", "Souffelweyersheim", "La Motte Chaloncon", "Vesoul", "Biarritz", "Clermont-Ferrand"].sample
+		name: Faker::Address.city
 		)
 end
-# création de 30 villes
+# création de 8 villes
 
 
 Stroll.destroy_all
@@ -60,7 +60,7 @@ Stroll.destroy_all
 
   	dogsitter: dogsitter
   	# fait référence au dogsitter_id de stroll
-  	
+
   	)
 end
 # création de 70 promenades
