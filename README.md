@@ -1,24 +1,33 @@
-# README
+# Etablissement des model et leur interaction
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dogsitter - City
 
-Things you may want to cover:
+	1 dogsitter n'a qu'une city
+	1 city a plusieurs dogsitter 
+	==> relation de type 1-N
+	==> city_id dans dogsitter via migration
 
-* Ruby version
+## Dog - City
 
-* System dependencies
+	1 dog n'a qu'une city
+	1 city a plusieurs dog 
+	==> relation de type 1-N
+	==> city_id dans dog via migration
 
-* Configuration
 
-* Database creation
+## Dogsitter - Dog
 
-* Database initialization
+	1 dogsitter a plusieurs dog 
+	1 dog a plusiers dogsitter
+	==> relation de type N-N
 
-* How to run the test suite
+	==> utilisation d'un model intermédiaire appelé Stroll
+	1 dogsitter a plusieurs stroll
+	1 stroll a 1 dogsitter 
+	==> relation de type 1-N
+	==> dogsitter_id_id dans stroll via migration
+	i dog a plusieurs stroll
+	1 stroll a un dog 
+	==> relation de type 1-N
+	==> dog_id dans stroll via migration
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
