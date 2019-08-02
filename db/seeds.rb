@@ -34,8 +34,17 @@ User.destroy_all
 
 20.times do
 	User.create(
-	email: Faker::Internet.safe_email,
-	phone_number: Faker::PhoneNumber.cell_phone,
-	description: Faker::Lorem.sentence
+		email: Faker::Internet.safe_email,
+		phone_number: Faker::PhoneNumber.cell_phone,
+		description: Faker::Lorem.sentence
 	)
 end
+
+
+Listing.destroy_all
+
+50.times do
+	Listing.create(available_beds: rand(1..5),price: rand(30..120),description: Faker::Quote.matz,has_wifi: ["Oui","Non"].sample,welcome_message: Faker::Lorem.sentence,city: City.all.sample,user: User.all.sample)
+	
+end
+
