@@ -5,3 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+Faker::Config.locale="fr"
+
+City.destroy_all
+
+cit = ["Strasbourg", "Bordeaux", "Paris", "Marseille", "Vesoul", "Dijon", "Nantes", "Lille", "Auxerre", "Lyon"]
+zip = ["67000", "33000", "75000", "13000", "70000", "21000", "44000", "59000", "89000", "69000"]
+
+c = 0
+z = 0
+
+10.times do
+
+	City.create(
+		name: cit[c],
+		zip_code: zip[z]
+		)	
+
+c += 1
+z +=1
+
+end
+
+
+User.destroy_all
+
+20.times do
+	User.create(
+	email: Faker::Internet.safe_email,
+	phone_number: Faker::PhoneNumber.cell_phone,
+	description: Faker::Lorem.sentence
+	)
+end
