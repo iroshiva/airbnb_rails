@@ -28,10 +28,12 @@ ActiveRecord::Schema.define(version: 2019_08_02_155335) do
     t.text "description"
     t.boolean "has_wifi"
     t.text "welcome_message"
+    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "city_id"
     t.bigint "user_id"
+    t.index ["admin_id"], name: "index_listings_on_admin_id"
     t.index ["city_id"], name: "index_listings_on_city_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
@@ -39,10 +41,12 @@ ActiveRecord::Schema.define(version: 2019_08_02_155335) do
   create_table "reservations", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
+    t.bigint "guest_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "listing_id"
+    t.index ["guest_id"], name: "index_reservations_on_guest_id"
     t.index ["listing_id"], name: "index_reservations_on_listing_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

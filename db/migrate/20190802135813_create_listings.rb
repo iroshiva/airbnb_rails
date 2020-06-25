@@ -6,6 +6,7 @@ class CreateListings < ActiveRecord::Migration[5.2]
       t.text :description
       t.boolean :has_wifi
       t.text :welcome_message
+      t.references :admin, index: true
 
       t.timestamps
     end

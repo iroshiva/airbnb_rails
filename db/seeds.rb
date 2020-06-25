@@ -42,10 +42,10 @@ end
 	)
 end
 
-wifi = ["Oui","Non"]
+# wifi = ["Oui","Non"]
 
 50.times do
-	Listing.create(available_beds: rand(1..5), price: rand(30..120),description: Faker::Quote.matz, has_wifi: wifi.sample, welcome_message: Faker::Lorem.sentence, city: City.all.sample, user: User.all.sample)
+	Listing.create(available_beds: rand(1..5), price: rand(30..120),description: Faker::Quote.matz, has_wifi: [true, false].sample, welcome_message: Faker::Lorem.sentence, city: City.all.sample, admin: User.all.sample)
 	
 end
 
@@ -55,7 +55,7 @@ Listing.all.each do |listing|
 	5.times do
     start_date = Faker::Date.backward(days: 700) 
     end_date = start_date + rand(1..10)
-    r = Reservation.create(start_date: start_date, end_date:end_date,listing: listing, user:User.all.sample )
+    r = Reservation.create(start_date: start_date, end_date:end_date,listing: listing, guest:User.all.sample )
     # while r.id == nil
     #   start_date = Faker::Date.backward(days: 700) 
     #   end_date = start_date + rand(1..10)
@@ -67,7 +67,7 @@ Listing.all.each do |listing|
   5.times do
     start_date = Faker::Date.forward(days: 700) 
     end_date = start_date + rand(1..10)
-    r = Reservation.create(start_date:start_date, end_date:end_date, listing: listing, user: User.all.sample )
+    r = Reservation.create(start_date:start_date, end_date:end_date, listing: listing, guest: User.all.sample )
     # while r.id == nil
     #   start_date = Faker::Date.forward(days: 700) 
     #   end_date = start_date + rand(1..10)

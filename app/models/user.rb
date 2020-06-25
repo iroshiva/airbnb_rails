@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-	has_many :reservations
-	has_many :listings, dependent: :destroy
+	has_many :reservations, foreign_key: 'guest_id'
+	has_many :listings, dependent: :destroy, foreign_key: 'admin_id'
 
 	validates :email, 
 		presence: true,

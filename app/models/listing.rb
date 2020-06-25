@@ -1,8 +1,8 @@
 class Listing < ApplicationRecord
 
 	belongs_to :city
-	belongs_to :user
-	# has_many :reservations
+	belongs_to :admin_id, class_name: "User"
+	has_many :reservations, dependent: :destroy
 
 	validates :available_beds,
 		presence: true,
